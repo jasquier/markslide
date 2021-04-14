@@ -1,0 +1,16 @@
+#!/bin/bash
+
+NC="\033[0m"
+LIGHTBLUE="\033[38;5;45m"
+PURPLE="\033[38;5;165m"
+LIGHTGREEN="\033[38;5;47m"
+
+# Exit with non-zero status if any of the following commands fail
+set -e
+
+# Run prettier + eslint
+printf "${LIGHTBLUE}Styling...${NC}\n"
+npm --loglevel silent run style:check
+printf "${PURPLE}Linting...${NC}\n"
+npm --loglevel silent run lint:check
+printf "${LIGHTGREEN}Files are Prettier 🌸 and Lint free 👔!${NC}\n"

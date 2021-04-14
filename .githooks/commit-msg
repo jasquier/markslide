@@ -1,0 +1,39 @@
+#!/bin/bash
+NC="\033[0m"
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+
+filename="$1"
+copy=$(mktemp)
+cat $filename >>$copy
+lineno=0
+
+error() {
+  printf "${RED}Commit stopped due to improper log message formatting!${NC}\n"
+  printf "${YELLOW}$1.${NC}\n"
+  printf "\n"
+  printf "Original commit message has been stored in _gitmsg.saved.txt\n"
+  mv $copy '_gitmsg.saved.txt'
+  exit 1
+}
+
+while read -r line; do
+  # Ignore comment lines (don't count line number either)
+  [[ "$line" =~ ^#.* ]] && continue
+
+  let lineno+=1
+  length=${#line}
+
+  # Subject line tests
+  if [[ $lineno -eq 1 ]]; then
+    [[ $length -gt 50 ]] && error "Limit the subject line to 50 characters"
+    [[ ! "$line" =~ ^(fixup! |squash! )?[A-Z].*$ ]] && error "Capitalize the subject line"
+    [[ "$line" == *. ]] && error "Do not end the subject line with a period"
+  fi
+
+  # Rules related to the commit message body
+  [[ $lineno -eq 2 ]] && [[ -n $line ]] && error "Separate subject from body with a blank line"
+  [[ $lineno -gt 1 ]] && [[ $length -gt 72 ]] && error "Wrap the body at 72 characters"
+done <"$filename"
+rm -f $copy
+exit 0

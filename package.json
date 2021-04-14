@@ -1,0 +1,23 @@
+{
+  "name": "markslide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "style": "prettier --prose-wrap 'always' --write .",
+    "style:check": "prettier --prose-wrap 'always' --check .",
+    "lint": "eslint --fix .",
+    "lint:check": "eslint --max-warnings 0 ."
+  },
+  "keywords": [],
+  "author": "John A. Squier <jasquier@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.24.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  }
+}

@@ -8,6 +8,9 @@ LIGHTGREEN="\033[38;5;47m"
 # Exit with non-zero status if any of the following commands fail
 set -e
 
+# Remove build files before checking anything
+npm --loglevel silent run clean
+
 # Run prettier + eslint
 printf "${LIGHTBLUE}Styling...${NC}\n"
 npm --loglevel silent run style:check

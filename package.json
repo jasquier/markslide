@@ -4,20 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "style": "prettier --prose-wrap 'always' --write .",
-    "style:check": "prettier --prose-wrap 'always' --check .",
+    "build": "tsc",
+    "clean": "rimraf dist/",
     "lint": "eslint --fix .",
-    "lint:check": "eslint --max-warnings 0 ."
+    "lint:check": "eslint --max-warnings 0 .",
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "style": "prettier --prose-wrap 'always' --write .",
+    "style:check": "prettier --prose-wrap 'always' --check ."
   },
   "keywords": [],
   "author": "John A. Squier <jasquier@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^14.14.41",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.24.0",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.2.4"
   }
 }

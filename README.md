@@ -12,8 +12,8 @@ Simply separate your slides with `---`.
 
 ## TODO
 
-- [ ] Make sure the right number of args are passed.
-- [ ] Read the file.
-- [ ] Register key press listener.
-- [ ] Print the first slide.
-- [ ] Respond to key presses.
+- [x] Make sure the right number of args are passed.
+- [x] Read the file.
+- [x] Register key press listener.
+- [x] Print the first slide.
+- [x] Respond to key presses.

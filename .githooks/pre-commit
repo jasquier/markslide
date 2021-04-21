@@ -1,19 +1,25 @@
 #!/bin/bash
 
 NC="\033[0m"
-LIGHTBLUE="\033[38;5;45m"
-PURPLE="\033[38;5;165m"
+YELLOW="\033[38;2;229;237;38m"
+LIGHTBLUE="\033[38;2;0;210;210m"
+PURPLE="\033[38;2;195;111;241m"
 LIGHTGREEN="\033[38;5;47m"
 
 # Exit with non-zero status if any of the following commands fail
 set -e
 
-# Remove build files before checking anything
-npm --loglevel silent run clean
+printf "${YELLOW}Building...${NC}\n"
+
+# Ensure we can build
+npm --loglevel silent run build
+
+# Set the script to be executable
+chmod u+x dist/index.js
 
 # Run prettier + eslint
 printf "${LIGHTBLUE}Styling...${NC}\n"
-npm --loglevel silent run style:check
+npm --loglevel silent run style:check -- --loglevel silent
 printf "${PURPLE}Linting...${NC}\n"
 npm --loglevel silent run lint:check
-printf "${LIGHTGREEN}Files are Prettier 🌸 and Lint free 👔!${NC}\n"
+printf "${LIGHTGREEN}Files are built 🛠 , prettier 🌸, and lint free 👔!${NC}\n"

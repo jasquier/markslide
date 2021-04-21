@@ -2,13 +2,21 @@
 
 The markdown slide viewer you didn't know you needed.
 
+---
+
 ## Usage
 
 `markslide slides.md`
 
+---
+
 ## Slide Format
 
-Simply separate your slides with `---`.
+Simply separate your slides with `---` breaks.
+
+You may notice that this README consists of valid slides.
+
+---
 
 ## TODO
 

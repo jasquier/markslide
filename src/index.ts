@@ -37,6 +37,7 @@ const show = () => {
   if (index >= slides.length) index = slides.length - 1;
 
   clearOutput();
+  if (index === 0) console.log();
   console.log(slides[index]);
 };
 

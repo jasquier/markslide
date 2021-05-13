@@ -3,6 +3,7 @@
 import fs from "fs";
 import readline from "readline";
 import { Key } from "node:readline";
+import colors from "colors";
 
 // Ensure proper usage
 if (process.argv.length !== 3) {
@@ -30,7 +31,6 @@ process.stdin.setRawMode(true);
 const clearOutput = () => {
   process.stdout.write("\u001B[2J\u001B[0;0f");
 };
-
 // Handles the showing of slides and manages index boundaries
 const show = () => {
   if (index < 0) index = 0;
@@ -39,6 +39,7 @@ const show = () => {
   clearOutput();
   if (index === 0) console.log();
   console.log(slides[index]);
+  process.stdout.write(colors.yellow(`${index + 1}`));
 };
 
 // Map key conditions to actions
